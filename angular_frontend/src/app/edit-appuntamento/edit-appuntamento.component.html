@@ -1,0 +1,33 @@
+<div>
+<form class="form-inline" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm">
+    <h1 style="text-align: center;">Aggiungi Appuntamento</h1>
+    <div class="form-group mb-2">
+        <label for="ora">Ora</label>
+        <input type="number" [(ngModel)]="appuntamento.ora" class="form-control" id="ora" name="ora"
+            aria-describedby="ora" placeholder="Digita l'ora">
+
+        <label for="descrizione">Descrizione</label>
+        <input type="test" [(ngModel)]="appuntamento.descrizione" class="form-control" name="descrizione"
+            id="descrizione" aria-describedby="descrizione" placeholder="Descrizione">
+
+        <div class="col-lg-3 col-sm-6">
+            <label >Data appuntamento</label>
+            <input [(ngModel)]="appuntamento.data" name="data" class="form-control" type="text" />
+        </div>
+
+        <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example"
+            [(ngModel)]="appuntamento.tipologiaId" (ngModelChange)="changeType($event)" name="tipologiaId">
+            <option *ngFor="let tipologia of listTipo" [ngValue]="tipologia.id">{{tipologia.tipologia}}</option>
+        </select>
+
+        <label for="descrizione">Ufficio</label>
+        <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example"
+            [(ngModel)]="appuntamento.ufficioId" (ngModelChange)="changeOffice($event)" name="ufficioId">
+            <option *ngFor="let ufficio of listUfficio" [ngValue]="ufficio.id">{{ufficio.nome}}</option>
+        </select>
+
+    </div>
+    <button type="submit" class="btn btn-primary mb-2">Aggiungi</button>
+    <button class="btn btn-primary mb-2" (click)="moveToList()">Indietro</button>
+</form>
+</div>

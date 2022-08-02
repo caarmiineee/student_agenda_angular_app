@@ -1,0 +1,40 @@
+<div class="container">
+  <div *ngIf="!isUpdate">
+    <h1 style="text-align: center;">Lista Appuntamenti</h1>
+    <div *ngFor="let appuntamento of list">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Ora</th>
+            <th scope="col">Descrizione</th>
+            <th scope="col">Data</th>
+            <th scope="col">Tipologia</th>
+            <th scope="col">Ufficio</th>
+            <th scope="col">Operazioni</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{{appuntamento.ora}}</td>
+            <td>{{appuntamento.descrizione}}</td>
+            <td>{{appuntamento.data}}</td>
+            <td>{{appuntamento.tipologiaNome}}</td>
+            <td>{{appuntamento.ufficioNome}}</td>
+            <td>
+              <button (click)="updateAppuntamento(appuntamento.id)" class="btn btn-info">Modifica</button>
+              <button (click)="deleteAppuntamento(appuntamento.id)" class="btn btn-danger" 
+                style="margin-left: 10px">Rimuovi</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  
+  
+  <div *ngIf="isUpdate">
+    <app-edit-appuntamento [id]="currentId"></app-edit-appuntamento>
+  </div>
+  
+
+</div>
